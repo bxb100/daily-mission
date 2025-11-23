@@ -3,7 +3,7 @@ name: Telegram signer
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "0 9 * * *"
 
 env:
   TG_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
