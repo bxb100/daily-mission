@@ -9,5 +9,3 @@ gpg --quiet --batch --yes --decrypt --passphrase="$TG_GPG_PASSPHRASE" --output m
 # config file
 gpg --quiet --batch --yes --decrypt --passphrase="$TG_GPG_PASSPHRASE" --output config.json config.json.gpg
 
-# tg-signer log file
-gpg --quiet --batch --yes --decrypt --passphrase="$TG_GPG_PASSPHRASE" --output tg-signer.log tg-signer.log.gpg
