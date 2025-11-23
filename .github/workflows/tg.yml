@@ -3,7 +3,10 @@ name: Telegram signer
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 9 * * *"
+    - cron: "0 */3 * * *"
+
+env:
+  TG_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 jobs:
   tgsigner:
@@ -13,21 +16,30 @@ jobs:
         with:
             python-version: '3.13'
             pip-install: -U tg-signer
-      - name: Write task config file
-        id: write_config
-        uses: timheuer/base64-to-file@v1.2
-        with:
-          fileName: 'config.json'
-          encodedString: ${{ secrets.TG_SINGER_TASK }}
+
+      - uses: actions/checkout@v6
+      - name: Decrypt session
+        run: ./scripts/tg/decrypt.sh
+      
       - name: Run tg-signer
         run: |
-          tg-signer import --file ${{ steps.write_config.outputs.filePath}} mytask
-          tg-signer --session-string "${{ secrets.TG_SESSION_STRING }}" run-once mytask
-      
-      - name: Upload log file
+          tg-signer import -I config.json mytask
+          tg-signer run-once mytask >/dev/null 2>&1
+
+      - name: Encrypt session
+        run: ./scripts/tg/encrypt.sh
+
+      - name: Upload log
         uses: actions/upload-artifact@v4
         with:
           name: logfile
-          path: ./*.log
+          path: tg-signer.log.gpg
           retention-days: 1
-
+      
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "20685961+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m 'update tg-signer session'
+          git push

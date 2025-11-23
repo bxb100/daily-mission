@@ -8,7 +8,7 @@ on:
 
 jobs:
   sync-images:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v5
