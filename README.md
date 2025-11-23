@@ -6,4 +6,6 @@
 
 ## Telegram Signer
 
-[tg.yml](./.github/workflows/tg.yml) using [tg-signer](https://github.com/amchii/tg-signer) to sign telegram messages.
+[tg.yml](./.github/workflows/tg.yml) using [tg-signer](https://github.com/amchii/tg-signer) to sign telegram messages.[^1]
+
+[^1]: <https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#storing-large-secrets>
