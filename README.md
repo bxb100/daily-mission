@@ -1,4 +1,8 @@
-# Daily Mission
+<p align="center">
+  <img width="1280" height="256" alt="Gemini_Generated_Image_utey79utey79utey-Photoroom" src="https://github.com/user-attachments/assets/8afa2c28-fdd3-4909-8fe1-6c66c5f41f05" />
+</p>
+
+---
 
 ## Sync Docker Images
 
