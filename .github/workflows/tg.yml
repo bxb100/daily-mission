@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-python@bfc4944b43a5d84377eca3cf6ab5b7992ba61923
         with:
             python-version: '3.13'
-            pip-install: -U tg-signer
+            pip-install: -U tg-signer==0.8.3
 
       - uses: actions/checkout@v6
       - name: Decrypt session
