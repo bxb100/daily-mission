@@ -24,8 +24,8 @@ jobs:
       
       - name: Run tg-signer
         run: |
-          tg-signer import -I config.json mytask
-          tg-signer run-once mytask >/dev/null 2>&1
+          tg-signer --log-file tg-signer.log import -I config.json mytask
+          tg-signer --log-file tg-signer.log run-once mytask >/dev/null 2>&1
 
       - name: Encrypt session
         run: ./scripts/tg/encrypt.sh
