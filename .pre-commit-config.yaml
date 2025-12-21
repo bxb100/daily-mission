@@ -5,7 +5,6 @@ repos:
     rev: v8.24.2
     hooks:
       - id: gitleaks
-        language_version: system
   - repo: "https://github.com/pre-commit/pre-commit-hooks"
     rev: v6.0.0
     hooks:
@@ -13,3 +12,10 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
+  - repo: local
+    hooks:
+      - id: check-configs
+        name: Check config
+        entry: ./scripts/tg/lint-config.py
+        language: python
+        files: ^configs.json.gpg$
