@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v6
       - name: Decrypt session
         run: ./scripts/tg/decrypt.sh
-      
+
       - name: Run tg-signer
         run: ./scripts/tg/core.sh configs.json
 
@@ -34,7 +34,7 @@ jobs:
           name: logfile
           path: tg-signer.log.gpg
           retention-days: 1
-      
+
       - name: Commit changes
         run: |
           git config --global user.name "github-actions[bot]"
