@@ -16,6 +16,10 @@ repos:
     hooks:
       - id: check-configs
         name: Check config
-        entry: ./scripts/tg/lint-config.py
+        entry: ./scripts/lint-config.py
         language: python
         files: ^configs.json.gpg$
+      - id: check-env-leaks
+        name: Check for .env value leaks
+        entry: ./scripts/check-env-leaks.sh
+        language: script
