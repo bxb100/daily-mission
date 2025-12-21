@@ -85,3 +85,4 @@ tg-signer.log*
 config.json
 configs.json
 logs/
+logfile/
