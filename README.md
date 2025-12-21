@@ -12,4 +12,6 @@
 
 [tg.yml](./.github/workflows/tg.yml) using [tg-signer](https://github.com/amchii/tg-signer) to sign telegram messages.[^1]
 
+`configs.json` schema is `[ { "task_name": "mytask", ...tg-signer_exported_json_config } ]`
+
 [^1]: <https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets#storing-large-secrets>

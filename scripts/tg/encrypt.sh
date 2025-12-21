@@ -11,7 +11,7 @@ encrypt_file my_account.session
 encrypt_file my_account.session_string
 
 # config file
-encrypt_file config.json
+encrypt_file configs.json
 
 # tg-signer log file
 encrypt_file tg-signer.log || true

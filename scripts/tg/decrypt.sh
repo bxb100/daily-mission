@@ -11,6 +11,6 @@ decrypt_file my_account.session
 decrypt_file my_account.session_string
 
 # config file
-decrypt_file config.json
+decrypt_file configs.json
 
 decrypt_file tg-signer.log || true
