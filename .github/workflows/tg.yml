@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [random_run]
-  schedule:
-    # run at 9am
-    - cron: "0 1 * * *"
+  # schedule:
+  #   # run at 9am
+  #   - cron: "0 1 * * *"
 
 env:
   TG_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
