@@ -2,6 +2,8 @@ name: Telegram signer
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [random_run]
   schedule:
     # run at 9am
     - cron: "0 1 * * *"
