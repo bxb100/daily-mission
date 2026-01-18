@@ -25,6 +25,7 @@ prune:
 run task:
   tg-signer run-once {{task}}
 
+[confirm("This will using encrypted config first")]
 run-all: decrypt
   ./scripts/tg/core.sh ./configs.json
 
