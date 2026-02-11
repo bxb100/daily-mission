@@ -10,6 +10,10 @@ ghcr.io:
       - v0.62.1
     bxb100/libraries-space-monitor:
       - latest
+    bestruirui/octopus:
+      - latest
+    jasonwong1991/easy_proxies:
+      - latest
 docker.io:
   images:
     openlistteam/openlist:

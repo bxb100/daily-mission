@@ -1,0 +1,25 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.2
+    hooks:
+      - id: gitleaks
+  - repo: "https://github.com/pre-commit/pre-commit-hooks"
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: local
+    hooks:
+      - id: check-configs
+        name: Check config
+        entry: ./scripts/lint-config.py
+        language: python
+        files: ^configs.json.gpg$
+      - id: check-env-leaks
+        name: Check for .env value leaks
+        entry: ./scripts/check-env-leaks.sh
+        language: script
