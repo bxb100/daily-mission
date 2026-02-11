@@ -9,7 +9,7 @@ on:
   #   - cron: "0 1 * * *"
 
 env:
-  TG_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+  TG_GPG_PASSPHRASE: ${{ secrets.TG_GPG_PASSPHRASE }}
   TG_SESSION_STRING: ${{ secrets.TG_SESSION_STRING }}
 
 jobs:
