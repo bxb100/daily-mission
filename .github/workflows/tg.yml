@@ -39,6 +39,7 @@ jobs:
           retention-days: 1
 
       - name: Commit changes
+        continue-on-error: true
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "20685961+bxb100@users.noreply.github.com"
