@@ -83,3 +83,6 @@ my_account.session
 my_account.session_string
 tg-signer.log*
 config.json
+configs.json
+logs/
+logfile/

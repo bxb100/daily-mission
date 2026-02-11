@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "解密 $0"
+export TG_GPG_PASSPHRASE=your_gpg_passphrase_here
+exec ./scripts/tg/decrypt.sh

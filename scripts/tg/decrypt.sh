@@ -1,11 +1,16 @@
 #!/bin/sh
 
+decrypt_file() {
+  gpg --quiet --batch --yes --decrypt --passphrase="$TG_GPG_PASSPHRASE" --output "$1" "$1.gpg"
+}
+
 # session
-gpg --quiet --batch --yes --decrypt --passphrase="$TG_GPG_PASSPHRASE" --output my_account.session my_account.session.gpg
+decrypt_file my_account.session
 
 # session string
-gpg --quiet --batch --yes --decrypt --passphrase="$TG_GPG_PASSPHRASE" --output my_account.session_string my_account.session_string.gpg
+# decrypt_file my_account.session_string
 
 # config file
-gpg --quiet --batch --yes --decrypt --passphrase="$TG_GPG_PASSPHRASE" --output config.json config.json.gpg
+decrypt_file configs.json
 
+decrypt_file tg-signer.log || true

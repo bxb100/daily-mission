@@ -3,8 +3,8 @@ name: Sync docker images
 on:
   workflow_dispatch:
   schedule:
-    # every day at 7am & 7pm pacific
-    - cron: "0 7,14 * * *"
+    # run each 8h
+    - cron: "0 */8 * * *"
 
 jobs:
   sync-images:
