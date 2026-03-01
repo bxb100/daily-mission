@@ -32,11 +32,11 @@ jobs:
           GITHUB_P: "op://dev/kxty2ca7vd4rm3grjli6z6cs2i/credential"
       - name: Skopeo login
         run: |
-          skopeo login --username $HUAWEI_U --password $HUAWEI_P swr.cn-north-4.myhuaweicloud.com
+          skopeo login --username $HUAWEI_U --password $HUAWEI_P swr.cn-north-4.myhuaweicloud.com 
           skopeo login --username $ALI_U --password $ALI_P registry.cn-hangzhou.aliyuncs.com
           skopeo login --username $GITHUB_U --password $GITHUB_P ghcr.io
 
       - name: Skopeo Sync
         run: |
-          skopeo sync -a -s yaml -d docker 2hw.yml swr.cn-north-4.myhuaweicloud.com/bxb100
-          skopeo sync -a -s yaml -d docker 2al.yml registry.cn-hangzhou.aliyuncs.com/bxb100
+          skopeo sync --scoped -a -s yaml -d docker 2hw.yml swr.cn-north-4.myhuaweicloud.com/bxb100
+          skopeo sync --scoped -a -s yaml -d docker 2al.yml registry.cn-hangzhou.aliyuncs.com/bxb100
