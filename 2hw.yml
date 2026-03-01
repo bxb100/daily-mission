@@ -14,6 +14,8 @@ ghcr.io:
       - latest
     jasonwong1991/easy_proxies:
       - latest
+    gotify/server:
+      - latest
 docker.io:
   images:
     openlistteam/openlist:
@@ -27,8 +29,6 @@ docker.io:
     xxnuo/mtranserver:
       - latest
     browserless/chrome:
-      - latest
-    gotify/server:
       - latest
     jxxghp/moviepilot-v2:
       - latest
