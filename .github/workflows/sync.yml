@@ -39,4 +39,4 @@ jobs:
       - name: Skopeo Sync
         run: |
           skopeo sync --scoped -a -s yaml -d docker 2hw.yml swr.cn-north-4.myhuaweicloud.com/bxb100
-          skopeo sync --scoped -a -s yaml -d docker 2al.yml registry.cn-hangzhou.aliyuncs.com/bxb100
+          skopeo sync -a -s yaml -d docker 2al.yml registry.cn-hangzhou.aliyuncs.com/bxb100
