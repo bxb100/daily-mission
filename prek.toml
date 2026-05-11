@@ -1,0 +1,24 @@
+# Configuration file for `prek`, a git hook framework written in Rust.
+# See https://prek.j178.dev for more information.
+#:schema https://www.schemastore.org/prek.json
+
+[[repos]]
+repo = "https://github.com/gitleaks/gitleaks"
+rev = "v8.24.2"
+hooks = [{ id = "gitleaks" }]
+
+[[repos]]
+repo = "https://github.com/pre-commit/pre-commit-hooks"
+rev = "v6.0.0"
+hooks = [
+  { id = "trailing-whitespace" },
+  { id = "end-of-file-fixer" },
+  { id = "check-yaml" },
+  { id = "check-added-large-files" },
+]
+
+[[repos]]
+repo = "local"
+hooks = [
+  { id = "check-env-leaks", name = "Check for .env value leaks", entry = "./scripts/check-env-leaks.sh", language = "script" },
+]

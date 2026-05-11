@@ -1,0 +1,29 @@
+name: TEST new
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [random_run]
+  schedule:
+    # run at 9am
+    - cron: "0 1 * * *"
+
+jobs:
+  singer:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v6
+      - uses: bxb100/tel@action
+        with:
+          task_data_url: ${{ secrets.TASK_DATA_URL }}
+          session_path: ./data/session.encrypt.gpg
+          decrypt_key: ${{ secrets.GPG_DECRYPT_KEY }}
+
+      - name: Commit changes
+        continue-on-error: true
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "20685961+bxb100@users.noreply.github.com"
+          git add .
+          git commit -m 'update telegram session'
+          git push

@@ -32,7 +32,7 @@ jobs:
           GITHUB_P: "op://dev/kxty2ca7vd4rm3grjli6z6cs2i/credential"
       - name: Skopeo login
         run: |
-          skopeo login --username $HUAWEI_U --password $HUAWEI_P swr.cn-north-4.myhuaweicloud.com 
+          skopeo login --username $HUAWEI_U --password $HUAWEI_P swr.cn-north-4.myhuaweicloud.com
           skopeo login --username $ALI_U --password $ALI_P registry.cn-hangzhou.aliyuncs.com
           skopeo login --username $GITHUB_U --password $GITHUB_P ghcr.io
 

@@ -86,3 +86,4 @@ config.json
 configs.json
 logs/
 logfile/
+mise.toml
