@@ -4,26 +4,37 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [random_run]
-  schedule:
-    # run at 9am
-    - cron: "0 1 * * *"
+  # schedule:
+  #   # run at 9am
+  #   - cron: "0 1 * * *"
 
 jobs:
   singer:
     runs-on: ubuntu-slim
     steps:
-      - uses: actions/checkout@v6
+      - name: Download from R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_REGION: auto
+        run: |
+          curl -O "$(aws s3 presign --endpoint-url ${{ secrets.R2_ENDPOINT }} s3://action/tasks.toml --expires-in 300)"
+          curl -O "$(aws s3 presign --endpoint-url ${{ secrets.R2_ENDPOINT }} s3://action/session --expires-in 300)"
+
       - uses: bxb100/tel@action
         with:
-          task_data_url: ${{ secrets.TASK_DATA_URL }}
-          session_path: ./data/session.encrypt.gpg
-          decrypt_key: ${{ secrets.GPG_DECRYPT_KEY }}
+          task_data_url: ./tasks.toml
+          session_path: ./session
 
-      - name: Commit changes
-        continue-on-error: true
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "20685961+bxb100@users.noreply.github.com"
-          git add .
-          git commit -m 'update telegram session'
-          git push
+      - name: Upload to R2
+        uses: bxb100/action-upload@v0
+        with:
+          provider: s3
+          provider_options: |
+            root=/
+            bucket=action
+            region=auto
+            endpoint=${{secrets.R2_ENDPOINT}}
+            access_key_id=${{secrets.R2_ACCESS_KEY_ID}}
+            secret_access_key=${{secrets.R2_SECRET_ACCESS_KEY}}
+          include: 'session'
