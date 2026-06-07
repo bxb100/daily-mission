@@ -16,6 +16,8 @@ ghcr.io:
       - latest
     gotify/server:
       - latest
+    jeffvli/feishin:
+      - latest
 docker.io:
   images:
     openlistteam/openlist:
