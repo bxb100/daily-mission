@@ -1,0 +1,30 @@
+name: Prune Action History
+
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * 1-5"
+
+jobs:
+  prune:
+    name: Prune history
+    runs-on: ubuntu-slim
+    permissions:
+      actions: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: GH
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # 1. 计算3天前的时间戳（秒）
+          THREE_DAYS_AGO=$(($(date +%s) - 259200))
+          
+          echo "正在查询并删除该仓库中 3 天前的所有工作流记录..."
+          
+          # 2. 执行筛选与批量删除
+          gh run list --limit 1000 --json databaseId,createdAt --jq ".[] | select((.createdAt | fromdateiso8601) < $THREE_DAYS_AGO) | .databaseId" | xargs -r -P 10 -I{} gh run delete {}
+          
+          echo "清理完成！"
+    
