@@ -31,7 +31,8 @@ jobs:
           skopeo login --username $ALI_U --password $ALI_P registry.cn-hangzhou.aliyuncs.com
           skopeo login --username $GITHUB_U --password $GITHUB_P ghcr.io
 
-      - name: Skopeo Sync
-        run: |
-          skopeo sync --scoped -a -s yaml -d docker 2hw.yml swr.cn-north-4.myhuaweicloud.com/bxb100
-          skopeo sync -a -s yaml -d docker 2al.yml registry.cn-hangzhou.aliyuncs.com/bxb100
+      - name: Skopeo Sync to HW
+        run: skopeo sync --scoped -a -s yaml -d docker 2hw.yml swr.cn-north-4.myhuaweicloud.com/bxb100
+
+      # - name: Skopeo Sync to ALI
+      # run: skopeo sync -a -s yaml -d docker 2al.yml registry.cn-hangzhou.aliyuncs.com/bxb100
