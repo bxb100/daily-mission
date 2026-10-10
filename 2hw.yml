@@ -4,19 +4,11 @@ ghcr.io:
       - latest
     super-linter/super-linter:
       - latest
-    maybe-finance/maybe:
-      - latest
-    fatedier/frpc:
-      - v0.62.1
     bxb100/libraries-space-monitor:
       - latest
-    bestruirui/octopus:
-      - latest
-    jasonwong1991/easy_proxies:
+    yetone/magpie:
       - latest
     gotify/server:
-      - latest
-    jeffvli/feishin:
       - latest
     imagegenius/immich:
       - noml
@@ -29,15 +21,11 @@ docker.io:
       - latest
     postgres:
       - "16"
-    gotson/komga:
-      - latest
-    tindy2013/subconverter:
-      - latest
-    xxnuo/mtranserver:
-      - latest
     browserless/chrome:
       - latest
     jxxghp/moviepilot-v2:
+      - latest
+    jxxghp/moviepilot-v3:
       - latest
     valkey/valkey:
       - 8-bookworm
