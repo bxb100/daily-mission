@@ -17,9 +17,9 @@ on:
 jobs:
   singer:
     runs-on: ubuntu-slim
-    env:
+    # env:
       # secrets 不能直接用于 if:,先在这里判断是否配置了 Notion
-      NOTION_ENABLED: ${{ secrets.NOTION_TOKEN != '' && secrets.NOTION_DATABASE_ID != '' }}
+      # NOTION_ENABLED: ${{ secrets.NOTION_TOKEN != '' && secrets.NOTION_DATABASE_ID != '' }}
     steps:
 
       - name: Download from R2
@@ -41,16 +41,16 @@ jobs:
           session_path: ./session
           task_name: ${{ inputs.task-name }}
 
-      - name: Upload log to Notion
-        id: notion
-        if: env.NOTION_ENABLED == 'true' && steps.tel.outputs.log_path != ''
-        uses: bxb100/action-notion@main
-        with:
-          notion_token: ${{ secrets.NOTION_TOKEN }}
-          database_id: ${{ secrets.NOTION_DATABASE_ID }}
-          title: "tel #${{ github.run_number }}"
-          content_file: ${{ steps.tel.outputs.log_path }}
-          content_format: plain
+      # - name: Upload log to Notion
+      #   id: notion
+      #   if: always() && env.NOTION_ENABLED == 'true' && steps.tel.outputs.log_path != ''
+      #   uses: bxb100/action-notion@main
+      #   with:
+      #     notion_token: ${{ secrets.NOTION_TOKEN }}
+      #     database_id: ${{ secrets.NOTION_DATABASE_ID }}
+      #     title: "tel #${{ github.run_number }}"
+      #     content_file: ${{ steps.tel.outputs.log_path }}
+      #     content_format: plain
 
       - name: Upload to R2
         uses: bxb100/action-upload@v0
