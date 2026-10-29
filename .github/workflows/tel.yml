@@ -34,7 +34,7 @@ jobs:
       - id: tel
         uses: bxb100/tel@action
         env:
-          RUST_LOG: debug
+          RUST_LOG: error
           RUST_BACKTRACE: 1
         with:
           task_path: ./tasks.toml
