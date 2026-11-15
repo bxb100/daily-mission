@@ -20,6 +20,7 @@ jobs:
         run: skopeo --version
       - name: Skopeo login
         env:
+          REGISTRY_AUTH_FILE: ${{ runner.temp }}/skopeo-auth/auth.json
           HUAWEI_U: ${{ secrets.HUAWEI_U }}
           HUAWEI_P: ${{ secrets.HUAWEI_P }}
           ALI_U: ${{ secrets.ALI_U }}
