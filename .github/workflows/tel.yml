@@ -16,7 +16,7 @@ on:
 
 jobs:
   singer:
-    runs-on: ubuntu-slim
+    runs-on: instabox-medium
     # env:
       # secrets 不能直接用于 if:,先在这里判断是否配置了 Notion
       # NOTION_ENABLED: ${{ secrets.NOTION_TOKEN != '' && secrets.NOTION_DATABASE_ID != '' }}
