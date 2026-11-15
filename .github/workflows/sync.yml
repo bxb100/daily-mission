@@ -18,9 +18,10 @@ jobs:
           sudo apt-get -y install skopeo
       - name: Skopeo version
         run: skopeo --version
+      - name: setting skopeo auth
+        run: echo "REGISTRY_AUTH_FILE=$RUNNER_TEMP/skopeo-auth/auth.json" >> $GITHUB_ENV
       - name: Skopeo login
         env:
-          REGISTRY_AUTH_FILE: ${{ runner.temp }}/skopeo-auth/auth.json
           HUAWEI_U: ${{ secrets.HUAWEI_U }}
           HUAWEI_P: ${{ secrets.HUAWEI_P }}
           ALI_U: ${{ secrets.ALI_U }}
